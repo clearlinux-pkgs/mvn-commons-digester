@@ -4,7 +4,7 @@
 #
 Name     : mvn-commons-digester
 Version  : 1.6
-Release  : 1
+Release  : 2
 URL      : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
 Source0  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
 Source1  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.pom
