@@ -4,16 +4,19 @@
 #
 Name     : mvn-commons-digester
 Version  : 1.6
-Release  : 2
+Release  : 3
 URL      : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
 Source0  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
 Source1  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.6/commons-digester-1.6.pom
-Source2  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.8/commons-digester-1.8.jar
-Source3  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.8/commons-digester-1.8.pom
+Source2  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.jar
+Source3  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.pom
+Source4  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.8/commons-digester-1.8.jar
+Source5  : https://repo1.maven.org/maven2/commons-digester/commons-digester/1.8/commons-digester-1.8.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-commons-digester-data = %{version}-%{release}
+Requires: mvn-commons-digester-license = %{version}-%{release}
 
 %description
 No detailed description available
@@ -26,22 +29,39 @@ Group: Data
 data components for the mvn-commons-digester package.
 
 
+%package license
+Summary: license components for the mvn-commons-digester package.
+Group: Default
+
+%description license
+license components for the mvn-commons-digester package.
+
+
 %prep
+%setup -q -n META-INF
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-commons-digester
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-commons-digester/LICENSE.txt
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.6
-cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.6
+cp %{SOURCE0} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.6
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.6
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.6/commons-digester-1.6.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8.1
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.jar
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8.1
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8
-cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.pom
 
 
 %files
@@ -51,5 +71,11 @@ cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/commons-digester/common
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/commons-digester/commons-digester/1.6/commons-digester-1.6.jar
 /usr/share/java/.m2/repository/commons-digester/commons-digester/1.6/commons-digester-1.6.pom
+/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.jar
+/usr/share/java/.m2/repository/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.pom
 /usr/share/java/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.jar
 /usr/share/java/.m2/repository/commons-digester/commons-digester/1.8/commons-digester-1.8.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-commons-digester/LICENSE.txt
